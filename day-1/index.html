@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+        .justCenter{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="justCenter">
+            <button onclick="CopyNAlert()">Copy Me!</button>
+        </div>
+        
+        <div class="box">
+                <button id="fadingBtn">Transitioned button</button>
+        </div>
+    </div>
+    <script>
+        let copyText = (text) => navigator.clipboard.writeText(text)
+        function CopyNAlert() {
+            copyText('Bankai')
+            alert('Text Copied™')            
+        }
+        let fadeBtn = document.querySelector('#fadingBtn')
+        fadeBtn.addEventListener('click', () => {
+            fadeBtn.style.opacity = 0
+        })
+        fadeBtn.addEventListener('transitionend', () => {
+            fadeBtn.style.display = 'none'
+        })
+    </script>
+</body>
+</html>
