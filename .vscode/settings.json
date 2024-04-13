@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
         "infi"
-    ]
+    ],
+    "editor.formatOnSave": true
 }
