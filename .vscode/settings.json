@@ -1,6 +1,7 @@
 {
-    "cSpell.words": [
-        "infi"
-    ],
-    "editor.formatOnSave": true
+    "prettier.semi": false,
+    "prettier.trailingComma": "none",
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
+  
