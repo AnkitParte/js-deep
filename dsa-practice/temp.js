@@ -1,44 +1,26 @@
 class Solution {
-  merge(arr, l, m, r) {
+  partition(arr, low, high) {
     // Your code here
-  }
-  mergeAll(arr, low, mid, high) {
+    let pivot = arr[low];
+    let pIdx = low;
     let i = low,
-      j = mid + 1;
-    let newArr = [];
-    while (i <= mid && j <= high) {
-      if (arr[i] <= arr[j]) {
-        newArr.push(arr[i]);
-        i++;
-      } else {
-        newArr.push(arr[j]);
-        j++;
+      j = high;
+    while (i < j) {
+      while (arr[i] <= pivot && i <= high - 1) i++;
+      while (arr[j] > pivot && j >= low + 1) j--;
+      if (i < j) {
+        [arr[i], arr[j]] = [arr[j], arr[i]];
       }
     }
-    while (j <= high) {
-      newArr.push(arr[j]);
-      j++;
-    }
-    while (i <= mid) {
-      newArr.push(arr[i]);
-      i++;
-    }
-    let x = 0;
-    for (let k = low; k <= high; k++) {
-      arr[k] = newArr[x];
-      x++;
-    }
-    //   console.log("arr", arr);
-    return arr;
+    [arr[j], arr[pIdx]] = [arr[pIdx], arr[j]];
+    return j;
   }
 
-  mergeSort(arr, low, high) {
+  quickSort(arr, low, high) {
+    //code here
     if (low >= high) return;
-    let mid = Math.floor((low + high) / 2);
-
-    mergeSort(arr, low, mid);
-    mergeSort(arr, mid + 1, high);
-
-    return this.mergeAll(arr, low, mid, high);
+    let pivot = this.partition(arr, low, high);
+    this.quickSort(arr, low, pivot - 1);
+    this.quickSort(arr, pivot + 1, high);
   }
 }
